@@ -11,8 +11,8 @@
  */
 
 function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
-    let A = [], B = [];
-    let cur = headA;
+    let A: ListNode[] = [], B: ListNode[] = [];
+    let cur: ListNode = headA;
     while(cur) {
         A.push(cur);
         cur = cur.next;
@@ -27,8 +27,8 @@ function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): Li
     A.reverse();
     B.reverse();
     
-    let n = Math.min(A.length, B.length)
-    let ans = null;
+    let n: number = Math.min(A.length, B.length)
+    let ans: ListNode = null;
     
     for(let i=0; i<n; i++) {
         if(A[i] === B[i]) ans = A[i];
