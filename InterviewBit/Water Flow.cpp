@@ -33,7 +33,7 @@ int Solution::solve(vector<vector<int> > &A) {
             b[x][y-1] = 1;
             bq.push({x,y-1});
         }
-        if(y+1 >= 0 && !b[x][y+1] && A[x][y+1] >= A[x][y]) {
+        if(y+1 < m && !b[x][y+1] && A[x][y+1] >= A[x][y]) {
             b[x][y+1] = 1;
             bq.push({x,y+1});
         }
@@ -55,7 +55,7 @@ int Solution::solve(vector<vector<int> > &A) {
             r[x][y-1] = 1;
             rq.push({x,y-1});
         }
-        if(y+1 >= 0 && !r[x][y+1] && A[x][y+1] >= A[x][y]) {
+        if(y+1 < m && !r[x][y+1] && A[x][y+1] >= A[x][y]) {
             r[x][y+1] = 1;
             rq.push({x,y+1});
         }
