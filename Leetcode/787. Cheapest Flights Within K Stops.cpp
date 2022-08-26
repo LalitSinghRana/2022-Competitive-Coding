@@ -1,3 +1,4 @@
+// Sol - 1 : Dijkstra Algorithm
 class Solution {
 public:
     int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
@@ -21,5 +22,26 @@ public:
         }
         
         return -1;
+    }
+};
+
+// Sol - 2 : Bellman Ford Algorithm
+class Solution {
+public:
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
+        vector<int> dis(n, INT_MAX);
+        dis[src] = 0;
+        k++;
+        
+        while(k--) {
+            auto temp = dis;
+            for(auto& a : flights) {
+                if(dis[a[0]] == INT_MAX) continue;
+                temp[a[1]] = min(temp[a[1]], dis[a[0]] + a[2]);
+            }
+            dis = temp;
+        }
+        
+        return dis[dst] == INT_MAX ? -1 : dis[dst];
     }
 };
