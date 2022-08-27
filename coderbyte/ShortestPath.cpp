@@ -16,20 +16,44 @@ that A can get to B and B can get to A.
 */
 
 #include <iostream>
+#include <sstream>
+#include <algorithm>
+#include <functional>
+
 #include <string>
 #include <vector>
-#include <sstream>
-#include <map>
 #include <queue>
 #include <stack>
-#include <algorithm>
-#include <unordered_map>
-using namespace std;
 
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <unordered_set>
+
+using namespace std;
 
 unordered_map<string,int> sti;
 unordered_map<int,string> its;
 vector<vector<int>> g;
+
+string getAns(vector<int> &pred, int n) {
+	if(pred[n-1] == -1) return "-1";
+
+	stack<int> st;
+  int i = n - 1;
+  while(i >= 0) {
+    st.push(i);
+    i = pred[i];
+  }
+
+	string ans;
+  while(!st.empty()) {
+    ans += "-" + its[st.top()];
+    st.pop();
+  }
+  string finAns = ans.substr(1, ans.size());
+  return finAns;
+}
 
 string find() {
   int n = g.size();
@@ -52,22 +76,7 @@ string find() {
     }
   }
 
-  if(pred[n-1] == -1) return "-1";
-
-  stack<int> st;
-  string ans;
-  int i = n - 1;
-  while(i >= 0) {
-    st.push(i);
-    i = pred[i];
-  }
-
-  while(!st.empty()) {
-    ans += "-" + its[st.top()];
-    st.pop();
-  }
-  string finAns = ans.substr(1, ans.size());
-  return finAns;
+  return getAns(pred, n);
 }
 
 string ShortestPath(string strArr[], int size) {
