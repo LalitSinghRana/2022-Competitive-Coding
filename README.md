@@ -1,3 +1,3 @@
 # Competitiv-Coding
 
-All competitive coding problems I solve on various platforms.
+All competitive coding problem's solution that I solve on various platforms in multiple languages.
