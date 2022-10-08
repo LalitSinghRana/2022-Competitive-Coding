@@ -19,8 +19,8 @@ impl Solution {
         let (mut s, mut f) = (&head, &head);
         
         while f.is_some() && f.as_ref().unwrap().next.is_some() {
-            s = &(s.as_ref().unwrap().next);
-            f = &(f.as_ref().unwrap().next.as_ref().unwrap().next);
+            s = &s.as_ref().unwrap().next;
+            f = &f.as_ref().unwrap().next.as_ref().unwrap().next;
         }
         
         s.clone()
