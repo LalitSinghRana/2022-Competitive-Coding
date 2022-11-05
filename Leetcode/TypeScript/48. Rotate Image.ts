@@ -1,19 +1,7 @@
 function rotate(A: number[][]): void {
-    let n = A.length;
+    A.reverse();
     
-    for(let i=0; i<n; i++) {
-        let l=0, r=i;
-        while(l<r) {
-            [A[r][l], A[l][r]] = [A[l][r], A[r][l]];
-            l++; r--;
-        }
-        
-        l=i; r=n-1;
-        while(i && l<r) {
-            [A[r][l], A[l][r]] = [A[l][r], A[r][l]];
-            l++; r--;
-        }
+    for(let i=0; i<A.length; i++) {
+        for(let j=0; j<i; j++) [A[i][j], A[j][i]] = [A[j][i], A[i][j]];
     }
-
-    for(let i=0; i<n; i++) A[i].reverse();
 };
